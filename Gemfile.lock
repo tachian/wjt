@@ -101,7 +101,7 @@ GEM
     minitest (5.8.4)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    mysql2 (0.4.2)
+    mysql2 (0.3.20)
     naught (1.1.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -226,7 +226,7 @@ DEPENDENCIES
   devise-bootstrap-views
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2
+  mysql2 (~> 0.3.18)
   omniauth-twitter
   rails (= 4.2.0)
   rspec-rails (~> 3.0)
