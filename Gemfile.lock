@@ -225,7 +225,7 @@ DEPENDENCIES
   devise-bootstrap-views
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2 (= 0.3.13)
+  mysql2
   omniauth-twitter
   rails (= 4.2.0)
   rspec-rails (~> 3.0)
