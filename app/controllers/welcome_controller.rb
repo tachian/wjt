@@ -9,9 +9,9 @@ class WelcomeController < ApplicationController
   end
 
   def search
-  	@tweets = current_user.twitter.user_timeline(params[:q])
-
+  	if (!current_user.secret.blank?)
+  		@tweets = current_user.twitter.user_timeline(params[:q])
+  	end
   	render :index
-
   end
 end
