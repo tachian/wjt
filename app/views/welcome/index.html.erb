@@ -1,28 +1,53 @@
-<% if user_signed_in? %>
-  <button type="button" class="btn btn-default">
-  	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-  </button>
 
-	<% if current_user.token.blank? %>
-		<button type="button" class="btn btn-default">
-	  	<a href="auth/twitter/">Connect to twitter</a>
-	  </button> 
-	<% else%>
+<div class="container">
+	<% if user_signed_in? %>
+		<div class="row">
+			<div class="col-md-1">
+			  <button type="button" class="btn btn-default">
+			  	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+			  </button>
+			</div>
 
-
-			<% @tweets.each do |tweet| %>
-				<div class="media">
-				  <div class="media-left">
-				    <img class="media-object" src="<%= tweet.user.profile_image_url %>">
-				  </div>
-				  <div class="media-body">
-				    <h4 class="media-heading"><%= tweet.user.screen_name %>, <%= tweet.created_at.to_formatted_s(:short) %></h4>
-				    <%= tweet.text %>
-				  </div>
+			<% if current_user.token.blank? %>
+				<div class="col-md-2">
+					<button type="button" class="btn btn-default">
+				  	<a href="auth/twitter/">Connect to twitter</a>
+				  </button> 
 				</div>
-		  <% end %>
+			<% end%>
+		</div>
 
-  <% end %>
+		<% if !current_user.token.blank? %>
 
-<% end %>
+			<div class="row">
+				<div class="col-md-4">
+					<%= form_tag '/search', method: :get do %>
+						<div class="input-group">
+						   <%= text_field_tag :q, nil, class:'form-control', placeholder:'Search...'%>
+						   <span class="input-group-btn">
+						     <%= button_tag( :class => "btn btn-default") do %>
+						        <span class='glyphicon glyphicon-search'></span>
+						     <% end %> 
+						   </span>
+						</div>
+					<% end %>
+				</div>
+			</div>
 
+			<!-- <div class="row"> -->
+				<% @tweets.each do |tweet| %>
+					<div class="media">
+					  <div class="media-left">
+					    <img class="media-object" src="<%= tweet.user.profile_image_url %>">
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading"><%= tweet.user.screen_name %>, <%= tweet.created_at.to_formatted_s(:short) %></h4>
+					    <%= tweet.text %>
+					  </div>
+					</div>
+			  <% end %>
+			<!-- </div> -->
+
+		<% end %>
+	<% end %>
+</div>

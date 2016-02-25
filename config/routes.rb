@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
+  get '/search', to: 'welcome#search'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
